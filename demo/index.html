@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+    <style>
+        .content {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+
+    <script src="../bower_components/chance/chance.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../scroll.js"></script>
+    <script>
+        var random = new Chance
+        document.querySelector('.content').innerText = random.paragraph({sentences: 100})
+    </script>
+
+</body>
+</html>

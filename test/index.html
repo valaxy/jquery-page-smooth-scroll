@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="chart1" width="960" height="400"></canvas>
+    <canvas id="chart2" width="960" height="400"></canvas>
+
+    <script src="../bower_components/smoothie/smoothie.js"></script>
+    <script>
+        var start = null
+
+        var sLine = new TimeSeries()
+        var vLine = new TimeSeries()
+        var lastTime = null
+        var s = 0 // 总位移
+
+
+        addEventListener('mousewheel', function (e) {
+            if (lastTime !== null) {
+                var v = e.wheelDelta / (e.timeStamp - lastTime)
+                vLine.append(e.timeStamp, v)
+            }
+            lastTime = e.timeStamp
+            s += e.wheelDelta
+            sLine.append(e.timeStamp, s)
+        })
+
+        function createTimeline() {
+            var chart1 = new SmoothieChart()
+            var chart2 = new SmoothieChart()
+            chart1.addTimeSeries(sLine, {
+                strokeStyle: 'green',
+                fillStyle  : 'rgba(0, 255, 0, 0.2)',
+                lineWidth  : 1
+            })
+            chart2.addTimeSeries(vLine, {
+                strokeStyle: 'red',
+                fillStyle  : 'rgba(0, 255, 0, 0.2)',
+                lineWidth  : 1
+            })
+            chart1.streamTo(document.getElementById("chart1"), 0)
+            chart2.streamTo(document.getElementById("chart2"), 0)
+        }
+
+        createTimeline()
+    </script>
+</body>
+</html>

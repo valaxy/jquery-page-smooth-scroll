@@ -1,0 +1,22 @@
+{
+  "name": "jquery-page-smooth-scroll",
+  "version": "0.0.0",
+  "authors": [
+    "valaxy <valaxy@qq.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "chance": "~0.7.6",
+    "smoothie": "~1.27.0"
+  },
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
